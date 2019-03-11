@@ -187,6 +187,7 @@ new DegreePlan{DegreePlanID=7262,StudentID=533988,DegreePlanAbbrev="slow And Eas
             else
             {
                 var slots = new Slot[] {
+
                     new Slot{SlotID=1,DegreePlanID=7255,Term=1,CreditID=356,Status ='B'},
 new Slot{SlotID=2,DegreePlanID=7255,Term=1,CreditID=542,Status ='B'},
 new Slot{SlotID=3,DegreePlanID=7255,Term=1,CreditID=563,Status ='C'},
@@ -307,6 +308,7 @@ new Slot{SlotID=118,DegreePlanID=7258,Term=3,CreditID=20,Status ='A'},
 new Slot{SlotID=119,DegreePlanID=7258,Term=4,CreditID=692,Status ='A'},
 new Slot{SlotID=120,DegreePlanID=7258,Term=4,CreditID=555,Status ='A'},
 new Slot{SlotID=121,DegreePlanID=7258,Term=5,CreditID=618,Status ='A'}
+
                 };
                 Console.WriteLine($"Inserted{slots.Length} new slots.");
                 foreach (Slot s in slots)
