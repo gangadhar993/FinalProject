@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Credit>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CreditAbbrev)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreditName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSummer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSpring)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsFall)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreditAbbrev)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreditName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSummer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSpring)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFall)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CreditID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CreditID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CreditID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

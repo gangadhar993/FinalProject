@@ -1,0 +1,42 @@
+﻿@model dotnetproject.Models.StudentTerm
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>StudentTerm</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DegreePlanId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DegreePlanId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Term)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Term)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TermAbbrev)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TermAbbrev)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TermName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TermName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.StudentTermID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
