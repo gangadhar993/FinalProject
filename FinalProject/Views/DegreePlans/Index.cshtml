@@ -16,22 +16,13 @@
                 @Html.DisplayNameFor(model => model.Student)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DegreeAbbrev)
+                @Html.DisplayNameFor(model => model.DegreePlanAbbrev)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DegreePlanName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Degree)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.String)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DegreePlanAbbrev)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DereePlanName)
             </th>
             <th></th>
         </tr>
@@ -43,22 +34,13 @@
                 @Html.DisplayFor(modelItem => item.Student.StudentID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DegreeAbbrev)
+                @Html.DisplayFor(modelItem => item.DegreePlanAbbrev)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DegreePlanName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Degree.DegreeID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.String)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DegreePlanAbbrev)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DereePlanName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.DegreePlanID">Edit</a> |

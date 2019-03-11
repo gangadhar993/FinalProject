@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190311185157_MyFirstMigration")]
-    partial class MyFirstMigration
+    [Migration("20190311205821_initialmigration")]
+    partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -80,17 +80,11 @@ namespace FinalProject.Migrations
                 {
                     b.Property<int>("DegreePlanID");
 
-                    b.Property<string>("DegreeAbbrev");
-
                     b.Property<int>("DegreeID");
 
                     b.Property<string>("DegreePlanAbbrev");
 
                     b.Property<string>("DegreePlanName");
-
-                    b.Property<string>("DereePlanName");
-
-                    b.Property<string>("String");
 
                     b.Property<int>("StudentID");
 

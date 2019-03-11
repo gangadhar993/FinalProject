@@ -159,16 +159,16 @@ new DegreeCredit { DegreeCreditID = 48, DegreeID = 4, CreditID = 20 },
             {
                 var degreeplans = new DegreePlan[] {
 
-                 new DegreePlan{DegreePlanID=7253,StudentID=533705,DegreePlanAbbrev="Super fast",DereePlanName="As fast as I can",DegreeID=3},
-new DegreePlan{DegreePlanID=7254,StudentID=533705,DegreePlanAbbrev="slow And Easy",DereePlanName="Take a summer Off",DegreeID=3},
-new DegreePlan{DegreePlanID=7255,StudentID=533491,DegreePlanAbbrev="Super fast",DereePlanName="As fast as I can",DegreeID=3},
-new DegreePlan{DegreePlanID=7256,StudentID=533491,DegreePlanAbbrev="slow And Easy",DereePlanName="Take a summer Off",DegreeID=3},
-new DegreePlan{DegreePlanID=7257,StudentID=533727,DegreePlanAbbrev="SuperFast",DereePlanName="As fast as I can",DegreeID=3},
-new DegreePlan{DegreePlanID=7258,StudentID=533727,DegreePlanAbbrev="slow And Easy",DereePlanName="Take a summer Off",DegreeID=3},
-new DegreePlan{DegreePlanID=7259,StudentID=533622,DegreePlanAbbrev="slow And Easy",DereePlanName="Take a summer Off",DegreeID=3},
-new DegreePlan{DegreePlanID=7260,StudentID=533622,DegreePlanAbbrev="slow And Easy",DereePlanName="Take a summer Off",DegreeID=3},
-new DegreePlan{DegreePlanID=7261,StudentID=533988,DegreePlanAbbrev="Super fast",DereePlanName="As fast as I can",DegreeID=3},
-new DegreePlan{DegreePlanID=7262,StudentID=533988,DegreePlanAbbrev="slow And Easy",DereePlanName="Take a summer Off",DegreeID=3},
+                 new DegreePlan{DegreePlanID=7253,StudentID=533705,DegreePlanAbbrev="Super fast",DegreePlanName="As fast as I can",DegreeID=3},
+new DegreePlan{DegreePlanID=7254,StudentID=533705,DegreePlanAbbrev="slow And Easy",DegreePlanName="Take a summer Off",DegreeID=3},
+new DegreePlan{DegreePlanID=7255,StudentID=533491,DegreePlanAbbrev="Super fast",DegreePlanName="As fast as I can",DegreeID=3},
+new DegreePlan{DegreePlanID=7256,StudentID=533491,DegreePlanAbbrev="slow And Easy",DegreePlanName="Take a summer Off",DegreeID=3},
+new DegreePlan{DegreePlanID=7257,StudentID=533727,DegreePlanAbbrev="SuperFast",DegreePlanName="As fast as I can",DegreeID=3},
+new DegreePlan{DegreePlanID=7258,StudentID=533727,DegreePlanAbbrev="slow And Easy",DegreePlanName="Take a summer Off",DegreeID=3},
+new DegreePlan{DegreePlanID=7259,StudentID=533622,DegreePlanAbbrev="slow And Easy",DegreePlanName="Take a summer Off",DegreeID=3},
+new DegreePlan{DegreePlanID=7260,StudentID=533622,DegreePlanAbbrev="slow And Easy",DegreePlanName="Take a summer Off",DegreeID=3},
+new DegreePlan{DegreePlanID=7261,StudentID=533988,DegreePlanAbbrev="Super fast",DegreePlanName="As fast as I can",DegreeID=3},
+new DegreePlan{DegreePlanID=7262,StudentID=533988,DegreePlanAbbrev="slow And Easy",DegreePlanName="Take a summer Off",DegreeID=3},
 
 
                 };

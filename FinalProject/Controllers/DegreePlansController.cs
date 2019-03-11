@@ -58,7 +58,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DegreePlanID,StudentID,DegreeAbbrev,DegreePlanName,DegreeID,String,DegreePlanAbbrev,DereePlanName")] DegreePlan degreePlan)
+        public async Task<IActionResult> Create([Bind("DegreePlanID,StudentID,DegreePlanAbbrev,DegreePlanName,DegreeID")] DegreePlan degreePlan)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DegreePlanID,StudentID,DegreeAbbrev,DegreePlanName,DegreeID,String,DegreePlanAbbrev,DereePlanName")] DegreePlan degreePlan)
+        public async Task<IActionResult> Edit(int id, [Bind("DegreePlanID,StudentID,DegreePlanAbbrev,DegreePlanName,DegreeID")] DegreePlan degreePlan)
         {
             if (id != degreePlan.DegreePlanID)
             {

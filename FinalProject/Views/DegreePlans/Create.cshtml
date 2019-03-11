@@ -22,9 +22,9 @@
                 <select asp-for="StudentID" class ="form-control" asp-items="ViewBag.StudentID"></select>
             </div>
             <div class="form-group">
-                <label asp-for="DegreeAbbrev" class="control-label"></label>
-                <input asp-for="DegreeAbbrev" class="form-control" />
-                <span asp-validation-for="DegreeAbbrev" class="text-danger"></span>
+                <label asp-for="DegreePlanAbbrev" class="control-label"></label>
+                <input asp-for="DegreePlanAbbrev" class="form-control" />
+                <span asp-validation-for="DegreePlanAbbrev" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DegreePlanName" class="control-label"></label>
@@ -34,21 +34,6 @@
             <div class="form-group">
                 <label asp-for="DegreeID" class="control-label"></label>
                 <select asp-for="DegreeID" class ="form-control" asp-items="ViewBag.DegreeID"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="String" class="control-label"></label>
-                <input asp-for="String" class="form-control" />
-                <span asp-validation-for="String" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DegreePlanAbbrev" class="control-label"></label>
-                <input asp-for="DegreePlanAbbrev" class="form-control" />
-                <span asp-validation-for="DegreePlanAbbrev" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DereePlanName" class="control-label"></label>
-                <input asp-for="DereePlanName" class="form-control" />
-                <span asp-validation-for="DereePlanName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

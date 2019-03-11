@@ -12,12 +12,11 @@ public class DegreePlan
     public int StudentID { get; set; }
     [ForeignKey("StudentID")]
     public Student Student { get; set; }
-    public string DegreeAbbrev { get; set; }
+    public string DegreePlanAbbrev { get; set; }
     public string DegreePlanName { get; set; }
     public int DegreeID { get; set; }
     [ForeignKey("DegreeID")]
     public Degree Degree { get; set; }
-    public string String { get; set; }
-    public string DegreePlanAbbrev { get; internal set; }
-    public string DereePlanName { get; internal set; }
+    
+
 }

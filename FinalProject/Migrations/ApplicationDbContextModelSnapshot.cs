@@ -78,17 +78,11 @@ namespace FinalProject.Migrations
                 {
                     b.Property<int>("DegreePlanID");
 
-                    b.Property<string>("DegreeAbbrev");
-
                     b.Property<int>("DegreeID");
 
                     b.Property<string>("DegreePlanAbbrev");
 
                     b.Property<string>("DegreePlanName");
-
-                    b.Property<string>("DereePlanName");
-
-                    b.Property<string>("String");
 
                     b.Property<int>("StudentID");
 
