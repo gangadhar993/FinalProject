@@ -18,5 +18,5 @@ public class DegreePlan
     [ForeignKey("DegreeID")]
     public Degree Degree { get; set; }
     
-
+    //changed plan structure
 }
