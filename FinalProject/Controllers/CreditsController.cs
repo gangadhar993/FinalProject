@@ -19,9 +19,30 @@ namespace FinalProject.Controllers
         }
 
         // GET: Credits
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(String sortOrder)
         {
-            return View(await _context.Credits.ToListAsync());
+
+
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            var credits = from c in _context.Credits
+                           select c;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    credits = credits.OrderByDescending(c => c.CreditName);
+                    break;
+                case "Date":
+                    credits = credits.OrderBy(c =>c.IsFall );
+                    break;
+                case "date_desc":
+                    credits = credits.OrderByDescending(c=>c.IsSpring);
+                    break;
+                default:
+                    credits = credits.OrderBy(c => c.IsSummer);
+                    break;
+            }
+            return View(await credits.AsNoTracking().ToListAsync());
         }
 
         // GET: Credits/Details/5

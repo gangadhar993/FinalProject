@@ -13,10 +13,12 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Degree)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Degree)</a>
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Credit)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Credit)</a>
+                
             </th>
             <th></th>
         </tr>
@@ -25,10 +27,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Degree.DegreeID)
+                @Html.DisplayFor(modelItem => item.DegreeID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Credit.CreditID)
+                @Html.DisplayFor(modelItem => item.CreditID)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.DegreeCreditID">Edit</a> |

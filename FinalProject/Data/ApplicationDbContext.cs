@@ -38,13 +38,9 @@ namespace FinalProject.Data
             modelBuilder.Entity<Credit>().ToTable("Credit");
             modelBuilder.Entity<DegreeCredit>().ToTable("DegreeCredit");
             modelBuilder.Entity<Student>().ToTable("Student");
-            
             modelBuilder.Entity<DegreePlan>().ToTable("DegreePlan");
             modelBuilder.Entity<Slot>().ToTable("Slot");
             modelBuilder.Entity<StudentTerm>().ToTable("StudentTerm");
-
-            
-
         }
         }
     }

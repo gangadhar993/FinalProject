@@ -19,10 +19,30 @@ namespace FinalProject.Controllers
         }
 
         // GET: Slots
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(String sortOrder)
         {
-            var applicationDbContext = _context.Slots.Include(s => s.Credit).Include(s => s.DegreePlan);
-            return View(await applicationDbContext.ToListAsync());
+
+
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            var slots = from sl in _context.Slots
+                          select sl;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    slots = slots.OrderByDescending(sl => sl.Credit);
+                    break;
+                case "Date":
+                    slots = slots.OrderBy(sl => sl.DegreePlan);
+                    break;
+                case "date_desc":
+                    slots = slots.OrderByDescending(sl => sl.SlotID);
+                    break;
+                default:
+                    slots = slots.OrderBy(sl => sl.Term);
+                    break;
+            }
+            return View(await slots.AsNoTracking().ToListAsync());
         }
 
         // GET: Slots/Details/5
@@ -36,6 +56,7 @@ namespace FinalProject.Controllers
             var slot = await _context.Slots
                 .Include(s => s.Credit)
                 .Include(s => s.DegreePlan)
+                .Include(s => s.Term)
                 .FirstOrDefaultAsync(m => m.SlotID == id);
             if (slot == null)
             {

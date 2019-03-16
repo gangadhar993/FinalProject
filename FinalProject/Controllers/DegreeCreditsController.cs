@@ -19,10 +19,30 @@ namespace FinalProject.Controllers
         }
 
         // GET: DegreeCredits
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(String sortOrder)
         {
-            var applicationDbContext = _context.DegreeCredit.Include(d => d.Credit).Include(d => d.Degree);
-            return View(await applicationDbContext.ToListAsync());
+
+
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            var DegreeCredits = from c in _context.DegreeCredit
+                          select c;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    DegreeCredits = DegreeCredits.OrderByDescending(c => c.Credit);
+                    break;
+                case "Date":
+                    DegreeCredits = DegreeCredits.OrderBy(c => c.CreditID);
+                    break;
+                case "date_desc":
+                    DegreeCredits = DegreeCredits.OrderByDescending(c => c.Degree);
+                    break;
+                default:
+                    DegreeCredits = DegreeCredits.OrderBy(c => c.DegreeCreditID);
+                    break;
+            }
+            return View(await DegreeCredits.AsNoTracking().ToListAsync());
         }
 
         // GET: DegreeCredits/Details/5

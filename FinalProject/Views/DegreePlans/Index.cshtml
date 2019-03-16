@@ -13,25 +13,36 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Student)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.DegreePlanID)</a>
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DegreePlanAbbrev)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.StudentID)</a>
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DegreePlanName)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.DegreePlanAbbrev)</a>
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Degree)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.DegreePlanName)</a>
+                
             </th>
-            <th></th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.DegreeID)</a>
+                
+
+            </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Student.StudentID)
+                @Html.DisplayFor(modelItem => item.DegreePlanID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DegreePlanAbbrev)
@@ -40,7 +51,7 @@
                 @Html.DisplayFor(modelItem => item.DegreePlanName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Degree.DegreeID)
+                @Html.DisplayFor(modelItem => item.DegreeID)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.DegreePlanID">Edit</a> |

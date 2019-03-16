@@ -13,16 +13,20 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DegreePlan)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.DegreePlanID)</a>
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Term)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Term)</a>
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Credit)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.CreditID)</a>
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Status)</a>
+                
             </th>
             <th></th>
         </tr>
@@ -31,13 +35,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DegreePlan.DegreePlanID)
+                @Html.DisplayFor(modelItem => item.DegreePlanID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Term)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Credit.CreditID)
+                @Html.DisplayFor(modelItem => item.CreditID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)

@@ -19,10 +19,30 @@ namespace FinalProject.Controllers
         }
 
         // GET: DegreePlans
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(String sortOrder)
         {
-            var applicationDbContext = _context.DegreePlans.Include(d => d.Degree).Include(d => d.Student);
-            return View(await applicationDbContext.ToListAsync());
+
+
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            var degreePlan = from dp in _context.DegreePlans
+                          select dp;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    degreePlan = degreePlan.OrderByDescending(dp => dp.DegreePlanID);
+                    break;
+                case "Date":
+                    degreePlan = degreePlan.OrderBy(dp => dp.StudentID);
+                    break;
+                case "date_desc":
+                    degreePlan = degreePlan.OrderByDescending(dp => dp.DegreePlanAbbrev);
+                    break;
+                default:
+                    degreePlan = degreePlan.OrderBy(dp => dp.DegreePlanName);
+                    break;
+            }
+            return View(await degreePlan.AsNoTracking().ToListAsync());
         }
 
         // GET: DegreePlans/Details/5
@@ -36,6 +56,7 @@ namespace FinalProject.Controllers
             var degreePlan = await _context.DegreePlans
                 .Include(d => d.Degree)
                 .Include(d => d.Student)
+                .Include(d => d.DegreePlanName)
                 .FirstOrDefaultAsync(m => m.DegreePlanID == id);
             if (degreePlan == null)
             {

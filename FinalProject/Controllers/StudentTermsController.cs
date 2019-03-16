@@ -20,9 +20,30 @@ namespace FinalProject.Controllers
         }
 
         // GET: StudentTerms
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(String sortOrder)
         {
-            return View(await _context.StudentTerms.ToListAsync());
+
+
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            var studentTerms = from st in _context.StudentTerms
+                          select st;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    studentTerms = studentTerms.OrderByDescending(st => st.DegreePlanId);
+                    break;
+                case "Date":
+                    studentTerms = studentTerms.OrderBy(st => st.StudentTermID);
+                    break;
+                case "date_desc":
+                    studentTerms = studentTerms.OrderByDescending(st=>st.Term);
+                    break;
+                default:
+                    studentTerms = studentTerms.OrderBy(st => st.TermAbbrev);
+                    break;
+            }
+            return View(await studentTerms.AsNoTracking().ToListAsync());
         }
 
         // GET: StudentTerms/Details/5
