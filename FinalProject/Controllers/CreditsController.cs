@@ -19,14 +19,20 @@ namespace FinalProject.Controllers
         }
 
         // GET: Credits
-        public async Task<IActionResult> Index(String sortOrder)
+        public async Task<IActionResult> Index(String sortOrder, String searchString)
         {
 
 
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter"] = searchString;
             var credits = from c in _context.Credits
                            select c;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                credits = credits.Where(s => s.CreditName.Contains(searchString)
+                                       || s.CreditAbbrev.Contains(searchString));
+            }
             switch (sortOrder)
             {
                 case "name_desc":
@@ -39,7 +45,7 @@ namespace FinalProject.Controllers
                     credits = credits.OrderByDescending(c=>c.IsSpring);
                     break;
                 default:
-                    credits = credits.OrderBy(c => c.IsSummer);
+                    credits = credits.OrderBy(c => c.CreditName);
                     break;
             }
             return View(await credits.AsNoTracking().ToListAsync());

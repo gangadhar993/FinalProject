@@ -6,53 +6,52 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FinalProject.Data;
-using dotnetproject.Models;
 
 namespace FinalProject.Controllers
 {
-    public class StudentTermsController : Controller
+    public class StudentsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public StudentTermsController(ApplicationDbContext context)
+        public StudentsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: StudentTerms
-        public async Task<IActionResult> Index(String sortOrder, String searchString)
+        // GET: Students
+        public async Task<IActionResult> Index(String sortOrder,String searchString)
         {
-
 
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["CurrentFilter"] = searchString;
-            var studentTerms = from st in _context.StudentTerms
-                          select st;
+            var students = from s in _context.Students
+                           select s;
             if (!String.IsNullOrEmpty(searchString))
             {
-                studentTerms = studentTerms.Where(s => s.TermName.Contains(searchString)
-                                       || s.TermAbbrev.Contains(searchString));
+                students = students.Where(s => s.LastName.Contains(searchString)
+                                       || s.FirstName.Contains(searchString));
             }
             switch (sortOrder)
             {
                 case "name_desc":
-                    studentTerms = studentTerms.OrderByDescending(st => st.DegreePlanId);
+                    students = students.OrderByDescending(s => s.LastName);
                     break;
                 case "Date":
-                    studentTerms = studentTerms.OrderBy(st => st.StudentTermID);
+                    students = students.OrderBy(s => s.StudentID);
                     break;
                 case "date_desc":
-                    studentTerms = studentTerms.OrderByDescending(st=>st.Term);
+                    students = students.OrderByDescending(s => s.I919);
                     break;
                 default:
-                    studentTerms = studentTerms.OrderBy(st => st.TermAbbrev);
+                    students = students.OrderBy(s => s.LastName);
                     break;
             }
-            return View(await studentTerms.AsNoTracking().ToListAsync());
+            return View(await students.AsNoTracking().ToListAsync());
+            
         }
 
-        // GET: StudentTerms/Details/5
+        // GET: Students/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -60,39 +59,39 @@ namespace FinalProject.Controllers
                 return NotFound();
             }
 
-            var studentTerm = await _context.StudentTerms
-                .FirstOrDefaultAsync(m => m.StudentTermID == id);
-            if (studentTerm == null)
+            var student = await _context.Students
+                .FirstOrDefaultAsync(m => m.StudentID == id);
+            if (student == null)
             {
                 return NotFound();
             }
 
-            return View(studentTerm);
+            return View(student);
         }
 
-        // GET: StudentTerms/Create
+        // GET: Students/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: StudentTerms/Create
+        // POST: Students/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentTermID,DegreePlanId,Term,TermAbbrev,TermName")] StudentTerm studentTerm)
+        public async Task<IActionResult> Create([Bind("StudentID,LastName,FirstName,I919")] Student student)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(studentTerm);
+                _context.Add(student);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(studentTerm);
+            return View(student);
         }
 
-        // GET: StudentTerms/Edit/5
+        // GET: Students/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -100,22 +99,22 @@ namespace FinalProject.Controllers
                 return NotFound();
             }
 
-            var studentTerm = await _context.StudentTerms.FindAsync(id);
-            if (studentTerm == null)
+            var student = await _context.Students.FindAsync(id);
+            if (student == null)
             {
                 return NotFound();
             }
-            return View(studentTerm);
+            return View(student);
         }
 
-        // POST: StudentTerms/Edit/5
+        // POST: Students/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StudentTermID,DegreePlanId,Term,TermAbbrev,TermName")] StudentTerm studentTerm)
+        public async Task<IActionResult> Edit(int id, [Bind("StudentID,LastName,FirstName,I919")] Student student)
         {
-            if (id != studentTerm.StudentTermID)
+            if (id != student.StudentID)
             {
                 return NotFound();
             }
@@ -124,12 +123,12 @@ namespace FinalProject.Controllers
             {
                 try
                 {
-                    _context.Update(studentTerm);
+                    _context.Update(student);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentTermExists(studentTerm.StudentTermID))
+                    if (!StudentExists(student.StudentID))
                     {
                         return NotFound();
                     }
@@ -140,10 +139,10 @@ namespace FinalProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(studentTerm);
+            return View(student);
         }
 
-        // GET: StudentTerms/Delete/5
+        // GET: Students/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -151,30 +150,30 @@ namespace FinalProject.Controllers
                 return NotFound();
             }
 
-            var studentTerm = await _context.StudentTerms
-                .FirstOrDefaultAsync(m => m.StudentTermID == id);
-            if (studentTerm == null)
+            var student = await _context.Students
+                .FirstOrDefaultAsync(m => m.StudentID == id);
+            if (student == null)
             {
                 return NotFound();
             }
 
-            return View(studentTerm);
+            return View(student);
         }
 
-        // POST: StudentTerms/Delete/5
+        // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var studentTerm = await _context.StudentTerms.FindAsync(id);
-            _context.StudentTerms.Remove(studentTerm);
+            var student = await _context.Students.FindAsync(id);
+            _context.Students.Remove(student);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StudentTermExists(int id)
+        private bool StudentExists(int id)
         {
-            return _context.StudentTerms.Any(e => e.StudentTermID == id);
+            return _context.Students.Any(e => e.StudentID == id);
         }
     }
 }

@@ -19,14 +19,20 @@ namespace FinalProject.Controllers
         }
 
         // GET: Degrees
-        public async Task<IActionResult> Index(String sortOrder)
+        public async Task<IActionResult> Index(String sortOrder,String searchString)
         {
 
 
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter"] = searchString;
             var degrees = from d in _context.Degrees
                           select d;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                degrees = degrees.Where(s => s.DegreeName.Contains(searchString)
+                                       || s.DegreeAbbrev.Contains(searchString));
+            }
             switch (sortOrder)
             {
                 case "name_desc":

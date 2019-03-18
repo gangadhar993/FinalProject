@@ -19,12 +19,13 @@ namespace FinalProject.Controllers
         }
 
         // GET: Slots
-        public async Task<IActionResult> Index(String sortOrder)
+        public async Task<IActionResult> Index(String sortOrder, String searchString)
         {
 
 
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter"] = searchString;
             var slots = from sl in _context.Slots
                           select sl;
             switch (sortOrder)

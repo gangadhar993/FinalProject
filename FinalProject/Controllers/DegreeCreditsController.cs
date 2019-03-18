@@ -19,7 +19,7 @@ namespace FinalProject.Controllers
         }
 
         // GET: DegreeCredits
-        public async Task<IActionResult> Index(String sortOrder)
+        public async Task<IActionResult> Index(String sortOrder, int searchString)
         {
 
 
@@ -27,6 +27,7 @@ namespace FinalProject.Controllers
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             var DegreeCredits = from c in _context.DegreeCredit
                           select c;
+           
             switch (sortOrder)
             {
                 case "name_desc":
