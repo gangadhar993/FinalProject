@@ -23,7 +23,9 @@ namespace FinalProject.Controllers
         {
 
 
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "Credit" : "";
+            ViewData["DegreeCreditID"] = String.IsNullOrEmpty(sortOrder) ? "DegreeCreditID" : "";
+            ViewData["CreditID"] = String.IsNullOrEmpty(sortOrder) ? "CreditID" : "";
+            ViewData["DegreeID"] = String.IsNullOrEmpty(sortOrder) ? "DegreeID" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             var DegreeCredits = from c in _context.DegreeCredit
                           select c;
@@ -34,18 +36,16 @@ namespace FinalProject.Controllers
             }
             switch (sortOrder)
             {
-                case "Credit":
-                    DegreeCredits = DegreeCredits.OrderByDescending(c => c.Credit);
-                    break;
-                case "CreditID":
-                    DegreeCredits = DegreeCredits.OrderBy(c => c.CreditID);
-                    break;
-                case "date_desc":
-                    DegreeCredits = DegreeCredits.OrderByDescending(c => c.Degree);
-                    break;
-                default:
+                case "DegreeCreditID":
                     DegreeCredits = DegreeCredits.OrderBy(c => c.DegreeCreditID);
                     break;
+                case "CreditID":
+                    DegreeCredits = DegreeCredits.OrderByDescending(c => c.CreditID);
+                    break;
+                case "DegreeID":
+                    DegreeCredits = DegreeCredits.OrderByDescending(c => c.DegreeID);
+                    break;
+         
             }
             return View(await DegreeCredits.AsNoTracking().ToListAsync());
         }

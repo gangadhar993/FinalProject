@@ -19,9 +19,40 @@ namespace FinalProject.Controllers
         }
 
         // GET: Students
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(String sortOrder,String searchString)
         {
-            return View(await _context.Students.ToListAsync());
+
+            ViewData["LastName"] = String.IsNullOrEmpty(sortOrder) ? "LastName" : "";
+            ViewData["FirstName"] = String.IsNullOrEmpty(sortOrder) ? "FirstName" : "";
+            ViewData["StudentID"] = String.IsNullOrEmpty(sortOrder) ? "StudentID" : "";
+            ViewData["I919"] = String.IsNullOrEmpty(sortOrder) ? "I919" : "";
+            ViewData["CurrentFilter"] = searchString;
+            var students = from s in _context.Students
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.LastName.Contains(searchString)
+                                       || s.FirstName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "LastName":
+                    students = students.OrderByDescending(s => s.LastName);
+                    break;
+            
+                case "FirstName":
+                    students = students.OrderByDescending(s => s.FirstName);
+                    break;
+                case "StudentID":
+                    students = students.OrderByDescending(s => s.StudentID);
+                    break;
+                case "I919":
+                    students = students.OrderByDescending(s => s.I919);
+                    break;
+ 
+            }
+            return View(await students.AsNoTracking().ToListAsync());
+            
         }
 
         // GET: Students/Details/5

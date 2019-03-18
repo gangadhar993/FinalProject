@@ -24,8 +24,11 @@ namespace FinalProject.Controllers
         {
 
 
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "DegreePlanId" : "";
+            ViewData["TermSortParm"] = String.IsNullOrEmpty(sortOrder) ? "Term" : "";
+            ViewData["StudentTermID"] = String.IsNullOrEmpty(sortOrder) ? "StudentTermID" : "";
+            ViewData["TermAbbrev"] = String.IsNullOrEmpty(sortOrder) ? "TermAbbrev" : "";
+            ViewData["TermName"] = String.IsNullOrEmpty(sortOrder) ? "TermName" : "";
             ViewData["CurrentFilter"] = searchString;
             var studentTerms = from st in _context.StudentTerms
                           select st;
@@ -36,18 +39,23 @@ namespace FinalProject.Controllers
             }
             switch (sortOrder)
             {
-                case "name_desc":
+                case "DegreePlanId":
                     studentTerms = studentTerms.OrderByDescending(st => st.DegreePlanId);
                     break;
-                case "Date":
-                    studentTerms = studentTerms.OrderBy(st => st.StudentTermID);
+                case "StudentTermID":
+                    studentTerms = studentTerms.OrderByDescending(st => st.StudentTermID);
                     break;
-                case "date_desc":
+                case "Term":
                     studentTerms = studentTerms.OrderByDescending(st=>st.Term);
                     break;
-                default:
-                    studentTerms = studentTerms.OrderBy(st => st.TermAbbrev);
+                case "TermAbbrev":
+                    studentTerms = studentTerms.OrderByDescending(st => st.TermAbbrev);
                     break;
+
+                case "TermName":
+                    studentTerms = studentTerms.OrderByDescending(st => st.TermName);
+                    break;
+
             }
             return View(await studentTerms.AsNoTracking().ToListAsync());
         }

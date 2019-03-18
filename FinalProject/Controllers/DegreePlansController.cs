@@ -23,7 +23,11 @@ namespace FinalProject.Controllers
         {
 
 
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DegreePlanID"] = String.IsNullOrEmpty(sortOrder) ? "DegreePlanID" : "";
+            ViewData["StudentID"] = String.IsNullOrEmpty(sortOrder) ? "StudentID" : "";
+            ViewData["DegreePlanAbbrev"] = String.IsNullOrEmpty(sortOrder) ? "DegreePlanAbbrev" : "";
+            ViewData["DegreePlanName"] = String.IsNullOrEmpty(sortOrder) ? "DegreePlanName" : "";
+            ViewData["DegreeID"] = String.IsNullOrEmpty(sortOrder) ? "DegreeID" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["CurrentFilter"] = searchString;
             var degreePlan = from dp in _context.DegreePlans
@@ -35,17 +39,20 @@ namespace FinalProject.Controllers
             }
             switch (sortOrder)
             {
-                case "name_desc":
+                case "DegreePlanID":
                     degreePlan = degreePlan.OrderByDescending(dp => dp.DegreePlanID);
                     break;
-                case "Date":
-                    degreePlan = degreePlan.OrderBy(dp => dp.StudentID);
+                case "StudentID":
+                    degreePlan = degreePlan.OrderByDescending(dp => dp.StudentID);
                     break;
-                case "date_desc":
+                case "DegreePlanAbbrev":
                     degreePlan = degreePlan.OrderByDescending(dp => dp.DegreePlanAbbrev);
                     break;
-                default:
-                    degreePlan = degreePlan.OrderBy(dp => dp.DegreePlanName);
+                case "DegreePlanName":
+                    degreePlan = degreePlan.OrderByDescending(dp => dp.DegreePlanName);
+                    break;
+                case "DegreeID":
+                    degreePlan = degreePlan.OrderByDescending(dp => dp.DegreeID);
                     break;
             }
             return View(await degreePlan.AsNoTracking().ToListAsync());

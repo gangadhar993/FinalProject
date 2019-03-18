@@ -23,7 +23,10 @@ namespace FinalProject.Controllers
         {
 
 
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DegreeAbbrev"] = String.IsNullOrEmpty(sortOrder) ? "DegreeAbbrev" : "";
+            ViewData["DegreeName"] = String.IsNullOrEmpty(sortOrder) ? "DegreeName" : "";
+            ViewData["NumberOFTerms"] = String.IsNullOrEmpty(sortOrder) ? "NumberOFTerms" : "";
+            ViewData["DegreeID"] = String.IsNullOrEmpty(sortOrder) ? "DegreeID" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["CurrentFilter"] = searchString;
             var degrees = from d in _context.Degrees
@@ -35,17 +38,17 @@ namespace FinalProject.Controllers
             }
             switch (sortOrder)
             {
-                case "name_desc":
+                case "DegreeAbbrev":
                     degrees = degrees.OrderByDescending(d => d.DegreeAbbrev);
                     break;
-                case "Date":
-                    degrees = degrees.OrderBy(d => d.DegreeName);
+                case "DegreeName":
+                    degrees = degrees.OrderByDescending(d => d.DegreeName);
                     break;
-                case "date_desc":
+                case "NumberOFTerms":
                     degrees = degrees.OrderByDescending(d => d.NumberOFTerms);
                     break;
-                default:
-                    degrees = degrees.OrderBy(d => d.DegreeID);
+                case "DegreeID":
+                    degrees = degrees.OrderByDescending(d => d.DegreeID);
                     break;
             }
             return View(await degrees.AsNoTracking().ToListAsync());

@@ -23,7 +23,11 @@ namespace FinalProject.Controllers
         {
 
 
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["CreditID"] = String.IsNullOrEmpty(sortOrder) ? "CreditID" : "";
+            ViewData["DegreePlanID"] = String.IsNullOrEmpty(sortOrder) ? "DegreePlanID" : "";
+            ViewData["SlotID"] = String.IsNullOrEmpty(sortOrder) ? "SlotID" : "";
+            ViewData["Term"] = String.IsNullOrEmpty(sortOrder) ? "Term" : "";
+            ViewData["Status"] = String.IsNullOrEmpty(sortOrder) ? "Status" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["CurrentFilter"] = searchString;
             var slots = from sl in _context.Slots
@@ -35,18 +39,22 @@ namespace FinalProject.Controllers
             }
             switch (sortOrder)
             {
-                case "name_desc":
-                    slots = slots.OrderByDescending(sl => sl.Credit);
+                case "CreditID":
+                    slots = slots.OrderByDescending(sl => sl.CreditID);
                     break;
-                case "Date":
-                    slots = slots.OrderBy(sl => sl.DegreePlan);
+                case "DegreePlanID":
+                    slots = slots.OrderByDescending(sl => sl.DegreePlanID);
                     break;
-                case "date_desc":
+                case "SlotID":
                     slots = slots.OrderByDescending(sl => sl.SlotID);
                     break;
-                default:
-                    slots = slots.OrderBy(sl => sl.Term);
+                case "Term":
+                    slots = slots.OrderByDescending(sl => sl.Term);
                     break;
+                case "Status":
+                    slots = slots.OrderByDescending(sl => sl.Status);
+                    break;
+
             }
             return View(await slots.AsNoTracking().ToListAsync());
         }

@@ -23,8 +23,13 @@ namespace FinalProject.Controllers
         {
 
 
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "CreditName" : "";
-            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CreditName"] = String.IsNullOrEmpty(sortOrder) ? "CreditName" : "";
+            ViewData["CreditAbbrev"] = String.IsNullOrEmpty(sortOrder) ? "CreditAbbrev" : "";
+            ViewData["CreditID"] = String.IsNullOrEmpty(sortOrder) ? "CreditID" : "";
+            ViewData["IsSummer"] = String.IsNullOrEmpty(sortOrder) ? "IsSummer" : "";
+            ViewData["IsSpring"] = String.IsNullOrEmpty(sortOrder) ? "IsSpring" : "";
+            ViewData["IsFall"] = String.IsNullOrEmpty(sortOrder) ? "IsFall" : "";
+
             ViewData["CurrentFilter"] = searchString;
             var credits = from c in _context.Credits
                            select c;
@@ -39,13 +44,19 @@ namespace FinalProject.Controllers
                     credits = credits.OrderByDescending(c => c.CreditName);
                     break;
                 case "IsFall":
-                    credits = credits.OrderBy(c =>c.IsFall );
+                    credits = credits.OrderByDescending(c =>c.IsFall );
                     break;
                 case "IsSpring":
                     credits = credits.OrderByDescending(c=>c.IsSpring);
                     break;
-                default:
-                    credits = credits.OrderBy(c => c.CreditName);
+                case "IsSummer":
+                    credits = credits.OrderByDescending(c => c.IsSummer);
+                    break;
+                case "CreditAbbrev":
+                    credits = credits.OrderByDescending(c => c.CreditAbbrev);
+                    break;
+                case "CreditID":
+                    credits = credits.OrderByDescending(c => c.CreditID);
                     break;
             }
             return View(await credits.AsNoTracking().ToListAsync());
