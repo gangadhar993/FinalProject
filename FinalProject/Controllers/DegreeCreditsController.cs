@@ -19,21 +19,25 @@ namespace FinalProject.Controllers
         }
 
         // GET: DegreeCredits
-        public async Task<IActionResult> Index(String sortOrder, int searchString)
+        public async Task<IActionResult> Index(String sortOrder, String searchString)
         {
 
 
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "Credit" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             var DegreeCredits = from c in _context.DegreeCredit
                           select c;
-           
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                DegreeCredits = DegreeCredits.Where(s => s.CreditID.ToString().Contains(searchString)
+                                       || s.DegreeCreditID.ToString().Contains(searchString)|| s.DegreeID.ToString().Contains(searchString));
+            }
             switch (sortOrder)
             {
-                case "name_desc":
+                case "Credit":
                     DegreeCredits = DegreeCredits.OrderByDescending(c => c.Credit);
                     break;
-                case "Date":
+                case "CreditID":
                     DegreeCredits = DegreeCredits.OrderBy(c => c.CreditID);
                     break;
                 case "date_desc":

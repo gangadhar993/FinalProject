@@ -22,8 +22,7 @@ namespace FinalProject.Controllers
         public async Task<IActionResult> Index(String sortOrder,String searchString)
         {
 
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "LastName" : "";
             ViewData["CurrentFilter"] = searchString;
             var students = from s in _context.Students
                            select s;
@@ -34,13 +33,17 @@ namespace FinalProject.Controllers
             }
             switch (sortOrder)
             {
-                case "name_desc":
+                case "LastName":
                     students = students.OrderByDescending(s => s.LastName);
                     break;
-                case "Date":
+            
+                case "FirstName":
+                    students = students.OrderByDescending(s => s.FirstName);
+                    break;
+                case "StudentID":
                     students = students.OrderBy(s => s.StudentID);
                     break;
-                case "date_desc":
+                case "I919":
                     students = students.OrderByDescending(s => s.I919);
                     break;
                 default:

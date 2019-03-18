@@ -23,7 +23,7 @@ namespace FinalProject.Controllers
         {
 
 
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "CreditName" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["CurrentFilter"] = searchString;
             var credits = from c in _context.Credits
@@ -35,13 +35,13 @@ namespace FinalProject.Controllers
             }
             switch (sortOrder)
             {
-                case "name_desc":
+                case "CreditName":
                     credits = credits.OrderByDescending(c => c.CreditName);
                     break;
-                case "Date":
+                case "IsFall":
                     credits = credits.OrderBy(c =>c.IsFall );
                     break;
-                case "date_desc":
+                case "IsSpring":
                     credits = credits.OrderByDescending(c=>c.IsSpring);
                     break;
                 default:

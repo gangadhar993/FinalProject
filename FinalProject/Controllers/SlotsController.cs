@@ -28,6 +28,11 @@ namespace FinalProject.Controllers
             ViewData["CurrentFilter"] = searchString;
             var slots = from sl in _context.Slots
                           select sl;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                slots = slots.Where(s => s.SlotID.ToString().Contains(searchString)
+                                       || s.DegreePlanID.ToString().Contains(searchString)|| s.Term.ToString().Contains(searchString));
+            }
             switch (sortOrder)
             {
                 case "name_desc":
