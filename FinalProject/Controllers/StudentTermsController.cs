@@ -35,7 +35,7 @@ namespace FinalProject.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 studentTerms = studentTerms.Where(s => s.TermName.Contains(searchString)
-                                       || s.TermAbbrev.Contains(searchString));
+                                       || s.TermAbbrev.Contains(searchString)|| s.StudentTermID.ToString().Contains(searchString)|| s.Term.ToString().Contains(searchString));
             }
             switch (sortOrder)
             {

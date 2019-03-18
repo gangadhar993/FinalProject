@@ -35,7 +35,10 @@ namespace FinalProject.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 degreePlan = degreePlan.Where(s => s.DegreePlanName.Contains(searchString)
-                                       || s.DegreePlanAbbrev.Contains(searchString));
+                                       || s.DegreePlanAbbrev.Contains(searchString)||
+                                       s.DegreePlanAbbrev.Contains(searchString)
+                                       || s.StudentID.ToString().Contains(searchString)
+                                       || s.DegreeID.ToString().Contains(searchString));
             }
             switch (sortOrder)
             {

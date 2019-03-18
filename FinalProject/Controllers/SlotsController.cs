@@ -35,7 +35,7 @@ namespace FinalProject.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 slots = slots.Where(s => s.SlotID.ToString().Contains(searchString)
-                                       || s.DegreePlanID.ToString().Contains(searchString)|| s.Term.ToString().Contains(searchString));
+                                       || s.DegreePlanID.ToString().Contains(searchString)|| s.Term.ToString().Contains(searchString)|| s.CreditID.ToString().Contains(searchString));
             }
             switch (sortOrder)
             {
