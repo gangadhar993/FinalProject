@@ -46,13 +46,13 @@ namespace FinalProject.Controllers
                     degreePlan = degreePlan.OrderByDescending(dp => dp.StudentID);
                     break;
                 case "DegreePlanAbbrev":
-                    degreePlan = degreePlan.OrderByDescending(dp => dp.DegreePlanAbbrev);
+                    degreePlan = degreePlan.OrderBy(dp => dp.DegreePlanAbbrev);
                     break;
                 case "DegreePlanName":
                     degreePlan = degreePlan.OrderByDescending(dp => dp.DegreePlanName);
                     break;
                 case "DegreeID":
-                    degreePlan = degreePlan.OrderByDescending(dp => dp.DegreeID);
+                    degreePlan = degreePlan.OrderBy(dp => dp.DegreeID);
                     break;
             }
             return View(await degreePlan.AsNoTracking().ToListAsync());
