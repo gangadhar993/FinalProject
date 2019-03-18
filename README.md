@@ -5,7 +5,7 @@ Srujana Gattu
 
 Gangadhar adusumalli
 
-Poojitha Sigham
+Poojitha Singam
 
 Himabindu poshala
 
