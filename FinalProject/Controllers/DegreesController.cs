@@ -34,7 +34,7 @@ namespace FinalProject.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 degrees = degrees.Where(s => s.DegreeName.Contains(searchString)
-                                       || s.DegreeAbbrev.Contains(searchString));
+                                       || s.DegreeAbbrev.Contains(searchString)|| s.NumberOFTerms.ToString().Contains(searchString)|| s.DegreeID.ToString().Contains(searchString));
             }
             switch (sortOrder)
             {

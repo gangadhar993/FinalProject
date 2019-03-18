@@ -35,7 +35,10 @@ namespace FinalProject.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 degreePlan = degreePlan.Where(s => s.DegreePlanName.Contains(searchString)
-                                       || s.DegreePlanAbbrev.Contains(searchString));
+                                       || s.DegreePlanAbbrev.Contains(searchString)||
+                                       s.DegreePlanAbbrev.Contains(searchString)
+                                       || s.StudentID.ToString().Contains(searchString)
+                                       || s.DegreeID.ToString().Contains(searchString));
             }
             switch (sortOrder)
             {
@@ -46,13 +49,13 @@ namespace FinalProject.Controllers
                     degreePlan = degreePlan.OrderByDescending(dp => dp.StudentID);
                     break;
                 case "DegreePlanAbbrev":
-                    degreePlan = degreePlan.OrderByDescending(dp => dp.DegreePlanAbbrev);
+                    degreePlan = degreePlan.OrderBy(dp => dp.DegreePlanAbbrev);
                     break;
                 case "DegreePlanName":
                     degreePlan = degreePlan.OrderByDescending(dp => dp.DegreePlanName);
                     break;
                 case "DegreeID":
-                    degreePlan = degreePlan.OrderByDescending(dp => dp.DegreeID);
+                    degreePlan = degreePlan.OrderBy(dp => dp.DegreeID);
                     break;
             }
             return View(await degreePlan.AsNoTracking().ToListAsync());

@@ -32,7 +32,7 @@ namespace FinalProject.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 students = students.Where(s => s.LastName.Contains(searchString)
-                                       || s.FirstName.Contains(searchString));
+                                       || s.FirstName.Contains(searchString)|| s.I919.ToString().Contains(searchString)|| s.StudentID.ToString().Contains(searchString));
             }
             switch (sortOrder)
             {
