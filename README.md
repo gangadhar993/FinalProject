@@ -1,4 +1,4 @@
-                                       #Project Title: Student Course Registration
+#                                       #Project Title: Student Course Registration
 
 This GUI helps students to register their course with easy. Students should simply drag and drop the course names available in the course list into the respective term boxes. As soon as the course is dropped in the term box the student would be registered into the particular course for that term. All the student names are listed in the student tab available in the application. Each student has their respective plans listed on the GUI. 
 
