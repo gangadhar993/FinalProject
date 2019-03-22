@@ -29,15 +29,15 @@ This GUI helps students to register their course with easy. Students should simp
 
 ###List of Developers:
 
-* Srujana Gattu
+- Srujana Gattu
 
-* Gangadhar adusumalli
+- Gangadhar adusumalli
 
-* Poojitha Singam
+- Poojitha Singam
 
-* Himabindu poshala
+- Himabindu poshala
 
-* Gouthami Pasham
+- Gouthami Pasham
 
 ##Clone and Run:
 
