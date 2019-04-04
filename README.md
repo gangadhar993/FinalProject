@@ -35,4 +35,13 @@ https://github.com/gangadhar993/FinalProject/issues
 
 ![alt text](Screenshot2.png)
 
+## Total Cost earned:
+Still we have 2 more weeks to work
+Total cost we earned as a team: 
+For 4 weeks so far
+5*(3+3)*4*90= $10800 
+For 2 weeks 
+5*(3+3)*2*90= $5400
+Total = $16,200
+
 
