@@ -83,7 +83,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DegreeCreditID,DegreeID,CreditID")] DegreeCredit degreeCredit)
+        public async Task<IActionResult> Create([Bind("DegreeCreditID,DegreeID,CreditID,Done")] DegreeCredit degreeCredit)
         {
             if (ModelState.IsValid)
             {

@@ -17,11 +17,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="DegreeID" class="control-label"></label>
-                <select asp-for="DegreeID" class ="form-control" asp-items="ViewBag.DegreeID"></select>
+                <select asp-for="DegreeID" class="form-control" asp-items="ViewBag.DegreeID"></select>
             </div>
             <div class="form-group">
                 <label asp-for="CreditID" class="control-label"></label>
-                <select asp-for="CreditID" class ="form-control" asp-items="ViewBag.CreditID"></select>
+                <select asp-for="CreditID" class="form-control" asp-items="ViewBag.CreditID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Done" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Done" class="form-control" />
+                    <span asp-validation-for="Done" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
