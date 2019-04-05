@@ -18,7 +18,7 @@ public class Slot
     [ForeignKey("CreditID")]
     public Credit Credit { get; set; }
     public char Status { get; set; }
-
+    public bool Done { get; set; }
 
     public ICollection<Credit> Credits { get; set; }
 }

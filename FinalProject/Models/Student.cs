@@ -12,5 +12,6 @@ public class Student
     public string LastName { get; set; }
     public string FirstName { get; set; }
     public int I919 { get; set; }
+    public bool Done { get; set; }
 
 }

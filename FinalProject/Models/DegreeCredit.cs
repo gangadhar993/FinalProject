@@ -14,4 +14,5 @@ public class DegreeCredit
     public int CreditID { get; set; }
     [ForeignKey("CreditID")]
     public Credit Credit { get; set; }
+    public bool Done { get; set; }
 }

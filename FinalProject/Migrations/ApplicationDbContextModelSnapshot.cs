@@ -27,6 +27,8 @@ namespace FinalProject.Migrations
 
                     b.Property<string>("CreditName");
 
+                    b.Property<bool>("Done");
+
                     b.Property<int>("IsFall");
 
                     b.Property<int>("IsSpring");
@@ -50,6 +52,8 @@ namespace FinalProject.Migrations
 
                     b.Property<string>("DegreeName");
 
+                    b.Property<bool>("Done");
+
                     b.Property<int>("NumberOFTerms");
 
                     b.HasKey("DegreeID");
@@ -64,6 +68,8 @@ namespace FinalProject.Migrations
                     b.Property<int>("CreditID");
 
                     b.Property<int>("DegreeID");
+
+                    b.Property<bool>("Done");
 
                     b.HasKey("DegreeCreditID");
 
@@ -83,6 +89,8 @@ namespace FinalProject.Migrations
                     b.Property<string>("DegreePlanAbbrev");
 
                     b.Property<string>("DegreePlanName");
+
+                    b.Property<bool>("Done");
 
                     b.Property<int>("StudentID");
 
@@ -268,6 +276,8 @@ namespace FinalProject.Migrations
 
                     b.Property<int>("DegreePlanID");
 
+                    b.Property<bool>("Done");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 1)));
@@ -287,6 +297,8 @@ namespace FinalProject.Migrations
                 {
                     b.Property<int>("StudentID");
 
+                    b.Property<bool>("Done");
+
                     b.Property<string>("FirstName");
 
                     b.Property<int>("I919");
@@ -303,6 +315,8 @@ namespace FinalProject.Migrations
                     b.Property<int>("StudentTermID");
 
                     b.Property<int>("DegreePlanId");
+
+                    b.Property<bool>("Done");
 
                     b.Property<int>("Term");
 

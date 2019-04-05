@@ -11,5 +11,6 @@ public class Degree
     public string DegreeAbbrev { get; set; }
     public string DegreeName { get; set; }
     public int NumberOFTerms { get; set; }
-   
+    public bool Done { get; set; }
+
 }

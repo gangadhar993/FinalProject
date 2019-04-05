@@ -15,5 +15,6 @@ namespace dotnetproject.Models
         public int Term { get; internal set; }
         public string TermAbbrev { get; internal set; }
         public string TermName { get; internal set; }
+        public bool Done { get; set; }
     }
 }

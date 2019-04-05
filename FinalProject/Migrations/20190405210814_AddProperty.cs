@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FinalProject.Migrations
 {
-    public partial class initialmigration : Migration
+    public partial class AddProperty : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,7 +54,8 @@ namespace FinalProject.Migrations
                     DegreeID = table.Column<int>(nullable: false),
                     DegreeAbbrev = table.Column<string>(nullable: true),
                     DegreeName = table.Column<string>(nullable: true),
-                    NumberOFTerms = table.Column<int>(nullable: false)
+                    NumberOFTerms = table.Column<int>(nullable: false),
+                    Done = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,7 +69,8 @@ namespace FinalProject.Migrations
                     StudentID = table.Column<int>(nullable: false),
                     LastName = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
-                    I919 = table.Column<int>(nullable: false)
+                    I919 = table.Column<int>(nullable: false),
+                    Done = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -83,7 +85,8 @@ namespace FinalProject.Migrations
                     DegreePlanId = table.Column<int>(nullable: false),
                     Term = table.Column<int>(nullable: false),
                     TermAbbrev = table.Column<string>(nullable: true),
-                    TermName = table.Column<string>(nullable: true)
+                    TermName = table.Column<string>(nullable: true),
+                    Done = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -204,7 +207,8 @@ namespace FinalProject.Migrations
                     StudentID = table.Column<int>(nullable: false),
                     DegreePlanAbbrev = table.Column<string>(nullable: true),
                     DegreePlanName = table.Column<string>(nullable: true),
-                    DegreeID = table.Column<int>(nullable: false)
+                    DegreeID = table.Column<int>(nullable: false),
+                    Done = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -229,7 +233,8 @@ namespace FinalProject.Migrations
                 {
                     DegreeCreditID = table.Column<int>(nullable: false),
                     DegreeID = table.Column<int>(nullable: false),
-                    CreditID = table.Column<int>(nullable: false)
+                    CreditID = table.Column<int>(nullable: false),
+                    Done = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -250,7 +255,8 @@ namespace FinalProject.Migrations
                     DegreePlanID = table.Column<int>(nullable: false),
                     Term = table.Column<int>(nullable: false),
                     CreditID = table.Column<int>(nullable: false),
-                    Status = table.Column<string>(nullable: false)
+                    Status = table.Column<string>(nullable: false),
+                    Done = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -273,6 +279,7 @@ namespace FinalProject.Migrations
                     IsSummer = table.Column<int>(nullable: false),
                     IsSpring = table.Column<int>(nullable: false),
                     IsFall = table.Column<int>(nullable: false),
+                    Done = table.Column<bool>(nullable: false),
                     SlotID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
