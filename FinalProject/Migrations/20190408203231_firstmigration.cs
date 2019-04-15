@@ -63,6 +63,25 @@ namespace FinalProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Developers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Given = table.Column<string>(nullable: true),
+                    Family = table.Column<string>(nullable: true),
+                    GraduationTerm = table.Column<string>(nullable: true),
+                    DesiredPosition = table.Column<string>(nullable: true),
+                    Skills = table.Column<string>(nullable: true),
+                    Rating = table.Column<int>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Developers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Student",
                 columns: table => new
                 {
@@ -407,6 +426,9 @@ namespace FinalProject.Migrations
 
             migrationBuilder.DropTable(
                 name: "DegreeCredit");
+
+            migrationBuilder.DropTable(
+                name: "Developers");
 
             migrationBuilder.DropTable(
                 name: "StudentTerm");

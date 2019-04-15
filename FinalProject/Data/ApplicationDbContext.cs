@@ -42,6 +42,8 @@ namespace FinalProject.Data
             modelBuilder.Entity<Slot>().ToTable("Slot");
             modelBuilder.Entity<StudentTerm>().ToTable("StudentTerm");
         }
+
+        public DbSet<Developers> Developers { get; set; }
         }
     }
 

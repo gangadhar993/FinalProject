@@ -379,6 +379,23 @@ new StudentTerm{StudentTermID=45,DegreePlanId=7254,Term=5,TermAbbrev="F20",TermN
                 }
                 context.SaveChanges();
             }
+
+            if (context.Developers.Any())
+            {
+                Console.WriteLine("Developers already exist");
+            }
+            else
+            {
+                var developers = new Developers[] {
+                    
+                };
+                Console.WriteLine($"Inserted{developers.Length} new students.");
+                foreach (Developers s in developers)
+                {
+                    context.Developers.Add(s);
+                }
+                context.SaveChanges();
+            }
         }
     }
 }

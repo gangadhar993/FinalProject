@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190405211607_firstmigration")]
+    [Migration("20190408203231_firstmigration")]
     partial class firstmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -103,6 +103,31 @@ namespace FinalProject.Migrations
                     b.HasIndex("StudentID");
 
                     b.ToTable("DegreePlan");
+                });
+
+            modelBuilder.Entity("Developers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("DesiredPosition");
+
+                    b.Property<string>("Family");
+
+                    b.Property<string>("Given");
+
+                    b.Property<string>("GraduationTerm");
+
+                    b.Property<int>("Rating");
+
+                    b.Property<string>("Skills");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Developers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

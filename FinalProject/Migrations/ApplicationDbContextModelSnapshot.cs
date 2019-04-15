@@ -103,6 +103,31 @@ namespace FinalProject.Migrations
                     b.ToTable("DegreePlan");
                 });
 
+            modelBuilder.Entity("Developers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("DesiredPosition");
+
+                    b.Property<string>("Family");
+
+                    b.Property<string>("Given");
+
+                    b.Property<string>("GraduationTerm");
+
+                    b.Property<int>("Rating");
+
+                    b.Property<string>("Skills");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Developers");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
