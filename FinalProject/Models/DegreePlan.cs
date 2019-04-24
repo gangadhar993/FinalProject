@@ -17,7 +17,9 @@ public class DegreePlan
     public string DegreePlanName { get; set; }
     public int DegreeID { get; set; }
     [ForeignKey("DegreeID")]
-    public Degree Degree { get; set; }
+    public Degree Degree { get; set; }\
+
+
     public bool Done { get; set; }
 
     //changed plan structure
