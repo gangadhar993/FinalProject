@@ -21,11 +21,13 @@ This GUI helps students to register their course with easy. Students should simp
 Clone the application down to your local machine. Open the solution and run the code this is one way to see the output.
 
 ## Link to the repo:
+
 https://github.com/gangadhar993/FinalProject/issues
 
 
 
 ## Link to Issue tracker:
+
 https://github.com/gangadhar993/FinalProject/issues
 
 ##  Screen Shots:
