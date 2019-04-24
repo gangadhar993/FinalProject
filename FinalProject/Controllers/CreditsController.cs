@@ -18,7 +18,7 @@ namespace FinalProject.Controllers
             _context = context;
         }
 
-        // GET: Credits
+        // GET:  Credits
         public async Task<IActionResult> Index(String sortOrder, String searchString)
         {
 
@@ -59,6 +59,7 @@ namespace FinalProject.Controllers
                     credits = credits.OrderByDescending(c => c.CreditID);
                     break;
             }
+            //return view
             return View(await credits.AsNoTracking().ToListAsync());
         }
 
