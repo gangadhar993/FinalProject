@@ -6,15 +6,15 @@ This GUI helps students to register their course with easy. Students should simp
 
 ##  List of Developers:
 
-1. Srujana Gattu
+1.  Srujana Gattu
 
-2. Gangadhar adusumalli
+2.  Gangadhar adusumalli
 
-3. Poojitha Singam
+3.  Poojitha Singam
 
-4. Himabindu poshala
+4.  Himabindu poshala
 
-5. Gouthami Pasham
+5.  Gouthami Pasham
 
 ##  Clone and Run:
 
