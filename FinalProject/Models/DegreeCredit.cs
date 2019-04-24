@@ -15,4 +15,14 @@ public class DegreeCredit
     [ForeignKey("CreditID")]
     public Credit Credit { get; set; }
     public bool Done { get; set; }
+
+    public override string ToString()
+    {
+        return base.ToString() + ": " +
+          "DegreeCreditID = " + DegreeCreditID +
+          "DegreeID = " + DegreeID +
+          ", Credit = {" + Credit.ToString() +
+                       "}";
+    }
+
 }

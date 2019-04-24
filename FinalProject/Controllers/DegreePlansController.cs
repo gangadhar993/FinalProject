@@ -72,7 +72,6 @@ namespace FinalProject.Controllers
             var degreePlan = await _context.DegreePlans
                 .Include(d => d.Degree)
                 .Include(d => d.Student)
-                .Include(d => d.DegreePlanName)
                 .FirstOrDefaultAsync(m => m.DegreePlanID == id);
             if (degreePlan == null)
             {
@@ -116,7 +115,12 @@ namespace FinalProject.Controllers
                 return NotFound();
             }
 
-            var degreePlan = await _context.DegreePlans.FindAsync(id);
+            var degreePlan = await _context.DegreePlans
+                .Include(p => p.Degree).ThenInclude(pd => pd.DegreeCredits)
+                .Include(p => p.Student)
+                .Include(p => p.StudentTerms).ThenInclude(pt => pt.Slots)
+                .SingleOrDefaultAsync(m => m.DegreePlanID == id);
+
             if (degreePlan == null)
             {
                 return NotFound();

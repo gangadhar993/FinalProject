@@ -9,33 +9,23 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<form asp-action="Index" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Find by name: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
-            <input type="submit" value="Search" class="btn btn-default" /> |
-            <a asp-action="Index">Back to Full List</a>
-        </p>
-    </div>
-</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["DegreePlanID"]">@Html.DisplayNameFor(model => model.DegreePlanID)</a>
-                
+                @Html.DisplayNameFor(model => model.StudentTerm)
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["Term"]">@Html.DisplayNameFor(model => model.Term)</a>
-                
+                @Html.DisplayNameFor(model => model.Term)
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["CreditID"]">@Html.DisplayNameFor(model => model.CreditID)</a>
-                
+                @Html.DisplayNameFor(model => model.DegreeCredit)
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["Status"]">@Html.DisplayNameFor(model => model.Status)</a>
-                
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Done)
             </th>
             <th></th>
         </tr>
@@ -44,16 +34,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DegreePlanID)
+                @Html.DisplayFor(modelItem => item.StudentTerm.StudentTermID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Term)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreditID)
+                @Html.DisplayFor(modelItem => item.DegreeCredit.DegreeCreditID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Done)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.SlotID">Edit</a> |

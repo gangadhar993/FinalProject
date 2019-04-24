@@ -1,4 +1,4 @@
-﻿using dotnetproject.Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -159,7 +159,7 @@ new DegreeCredit { DegreeCreditID = 48, DegreeID = 4, CreditID = 20 },
             {
                 var degreeplans = new DegreePlan[] {
 
-                 new DegreePlan{DegreePlanID=7253,StudentID=533705,DegreePlanAbbrev="Super fast",DegreePlanName="As fast as I can",DegreeID=3},
+new DegreePlan{DegreePlanID=7253,StudentID=533705,DegreePlanAbbrev="Super fast",DegreePlanName="As fast as I can",DegreeID=3},
 new DegreePlan{DegreePlanID=7254,StudentID=533705,DegreePlanAbbrev="slow And Easy",DegreePlanName="Take a summer Off",DegreeID=3},
 new DegreePlan{DegreePlanID=7255,StudentID=533491,DegreePlanAbbrev="Super fast",DegreePlanName="As fast as I can",DegreeID=3},
 new DegreePlan{DegreePlanID=7256,StudentID=533491,DegreePlanAbbrev="slow And Easy",DegreePlanName="Take a summer Off",DegreeID=3},
@@ -176,144 +176,6 @@ new DegreePlan{DegreePlanID=7262,StudentID=533988,DegreePlanAbbrev="slow And Eas
                 foreach (DegreePlan s in degreeplans)
                 {
                     context.DegreePlans.Add(s);
-                }
-                context.SaveChanges();
-            }
-
-            if (context.Slots.Any())
-            {
-                Console.WriteLine("Slots already exist");
-            }
-            else
-            {
-                var slots = new Slot[] {
-
-                    new Slot{SlotID=1,DegreePlanID=7255,Term=1,CreditID=356,Status ='B'},
-new Slot{SlotID=2,DegreePlanID=7255,Term=1,CreditID=542,Status ='B'},
-new Slot{SlotID=3,DegreePlanID=7255,Term=1,CreditID=563,Status ='C'},
-new Slot{SlotID=4,DegreePlanID=7255,Term=2,CreditID=560,Status ='C'},
-new Slot{SlotID=5,DegreePlanID=7255,Term=2,CreditID=664,Status ='B'},
-new Slot{SlotID=6,DegreePlanID=7255,Term=2,CreditID=6,Status ='B'},
-new Slot{SlotID=7,DegreePlanID=7255,Term=3,CreditID=618,Status ='B'},
-new Slot{SlotID=8,DegreePlanID=7255,Term=3,CreditID=691,Status ='B'},
-new Slot{SlotID=9,DegreePlanID=7255,Term=3,CreditID=10,Status ='B'},
-new Slot{SlotID=10,DegreePlanID=7255,Term=4,CreditID=20,Status ='B'},
-new Slot{SlotID=11,DegreePlanID=7255,Term=4,CreditID=692,Status ='B'},
-new Slot{SlotID=12,DegreePlanID=7255,Term=4,CreditID=555,Status ='B'},
-new Slot{SlotID=13,DegreePlanID=7256,Term=1,CreditID=356,Status ='B'},
-new Slot{SlotID=14,DegreePlanID=7256,Term=1,CreditID=542,Status ='B'},
-new Slot{SlotID=15,DegreePlanID=7256,Term=1,CreditID=563,Status ='B'},
-new Slot{SlotID=16,DegreePlanID=7256,Term=2,CreditID=560,Status ='B'},
-new Slot{SlotID=17,DegreePlanID=7256,Term=2,CreditID=664,Status ='B'},
-new Slot{SlotID=18,DegreePlanID=7256,Term=2,CreditID=6,Status ='B'},
-new Slot{SlotID=19,DegreePlanID=7256,Term=3,CreditID=618,Status ='B'},
-new Slot{SlotID=20,DegreePlanID=7256,Term=3,CreditID=691,Status ='B'},
-new Slot{SlotID=21,DegreePlanID=7256,Term=3,CreditID=10,Status ='B'},
-new Slot{SlotID=22,DegreePlanID=7256,Term=4,CreditID=20,Status ='B'},
-new Slot{SlotID=23,DegreePlanID=7256,Term=4,CreditID=692,Status ='B'},
-new Slot{SlotID=24,DegreePlanID=7256,Term=4,CreditID=555,Status ='B'},
-new Slot{SlotID=25,DegreePlanID=7259,Term=1,CreditID=356,Status ='B'},
-new Slot{SlotID=26,DegreePlanID=7259,Term=1,CreditID=542,Status ='B'},
-new Slot{SlotID=27,DegreePlanID=7259,Term=1,CreditID=563,Status ='C'},
-new Slot{SlotID=28,DegreePlanID=7259,Term=2,CreditID=560,Status ='C'},
-new Slot{SlotID=29,DegreePlanID=7259,Term=2,CreditID=10,Status ='A'},
-new Slot{SlotID=30,DegreePlanID=7259,Term=2,CreditID=6,Status ='A'},
-new Slot{SlotID=31,DegreePlanID=7259,Term=3,CreditID=618,Status ='A'},
-new Slot{SlotID=32,DegreePlanID=7259,Term=4,CreditID=691,Status ='A'},
-new Slot{SlotID=33,DegreePlanID=7259,Term=4,CreditID=20,Status ='A'},
-new Slot{SlotID=34,DegreePlanID=7259,Term=5,CreditID=692,Status ='A'},
-new Slot{SlotID=35,DegreePlanID=7259,Term=5,CreditID=555,Status ='A'},
-new Slot{SlotID=36,DegreePlanID=7259,Term=5,CreditID=664,Status ='A'},
-new Slot{SlotID=37,DegreePlanID=7260,Term=1,CreditID=356,Status ='A'},
-new Slot{SlotID=38,DegreePlanID=7260,Term=1,CreditID=542,Status ='A'},
-new Slot{SlotID=39,DegreePlanID=7260,Term=1,CreditID=563,Status ='A'},
-new Slot{SlotID=40,DegreePlanID=7260,Term=2,CreditID=560,Status ='A'},
-new Slot{SlotID=41,DegreePlanID=7260,Term=2,CreditID=10,Status ='A'},
-new Slot{SlotID=42,DegreePlanID=7260,Term=2,CreditID=6,Status ='A'},
-new Slot{SlotID=43,DegreePlanID=7260,Term=4,CreditID=691,Status ='A'},
-new Slot{SlotID=44,DegreePlanID=7260,Term=4,CreditID=20,Status ='A'},
-new Slot{SlotID=45,DegreePlanID=7260,Term=5,CreditID=692,Status ='A'},
-new Slot{SlotID=46,DegreePlanID=7260,Term=5,CreditID=555,Status ='A'},
-new Slot{SlotID=47,DegreePlanID=7260,Term=5,CreditID=664,Status ='A'},
-new Slot{SlotID=48,DegreePlanID=7260,Term=3,CreditID=618,Status ='A'},
-new Slot{SlotID=50,DegreePlanID=7261,Term=1,CreditID=542,Status ='B'},
-new Slot{SlotID=51,DegreePlanID=7261,Term=1,CreditID=563,Status ='B'},
-new Slot{SlotID=52,DegreePlanID=7261,Term=1,CreditID=356,Status ='C'},
-new Slot{SlotID=53,DegreePlanID=7261,Term=1,CreditID=560,Status ='C'},
-new Slot{SlotID=54,DegreePlanID=7261,Term=2,CreditID=664,Status ='B'},
-new Slot{SlotID=55,DegreePlanID=7261,Term=2,CreditID=6,Status ='B'},
-new Slot{SlotID=56,DegreePlanID=7261,Term=2,CreditID=10,Status ='B'},
-new Slot{SlotID=57,DegreePlanID=7261,Term=3,CreditID=20,Status ='B'},
-new Slot{SlotID=58,DegreePlanID=7261,Term=3,CreditID=691,Status ='B'},
-new Slot{SlotID=59,DegreePlanID=7261,Term=3,CreditID=618,Status ='B'},
-new Slot{SlotID=60,DegreePlanID=7261,Term=4,CreditID=555,Status ='B'},
-new Slot{SlotID=61,DegreePlanID=7261,Term=4,CreditID=692,Status ='B'},
-new Slot{SlotID=62,DegreePlanID=7262,Term=1,CreditID=542,Status ='B'},
-new Slot{SlotID=63,DegreePlanID=7262,Term=1,CreditID=563,Status ='B'},
-new Slot{SlotID=64,DegreePlanID=7262,Term=1,CreditID=356,Status ='C'},
-new Slot{SlotID=65,DegreePlanID=7262,Term=1,CreditID=560,Status ='C'},
-new Slot{SlotID=66,DegreePlanID=7262,Term=2,CreditID=664,Status ='B'},
-new Slot{SlotID=67,DegreePlanID=7262,Term=2,CreditID=6,Status ='B'},
-new Slot{SlotID=68,DegreePlanID=7262,Term=2,CreditID=10,Status ='B'},
-new Slot{SlotID=69,DegreePlanID=7262,Term=3,CreditID=20,Status ='B'},
-new Slot{SlotID=70,DegreePlanID=7262,Term=3,CreditID=691,Status ='B'},
-new Slot{SlotID=71,DegreePlanID=7262,Term=3,CreditID=618,Status ='B'},
-new Slot{SlotID=72,DegreePlanID=7262,Term=4,CreditID=555,Status ='B'},
-new Slot{SlotID=73,DegreePlanID=7262,Term=4,CreditID=692,Status ='B'},
-new Slot{SlotID=74,DegreePlanID=7253,Term=1,CreditID=542,Status ='C'},
-new Slot{SlotID=75,DegreePlanID=7253,Term=1,CreditID=356,Status ='C'},
-new Slot{SlotID=76,DegreePlanID=7253,Term=1,CreditID=563,Status ='C'},
-new Slot{SlotID=77,DegreePlanID=7253,Term=2,CreditID=560,Status ='A'},
-new Slot{SlotID=78,DegreePlanID=7253,Term=2,CreditID=6,Status ='A'},
-new Slot{SlotID=79,DegreePlanID=7253,Term=2,CreditID=555,Status ='A'},
-new Slot{SlotID=80,DegreePlanID=7253,Term=3,CreditID=664,Status ='P'},
-new Slot{SlotID=81,DegreePlanID=7253,Term=3,CreditID=691,Status ='P'},
-new Slot{SlotID=82,DegreePlanID=7253,Term=3,CreditID=618,Status ='P'},
-new Slot{SlotID=83,DegreePlanID=7253,Term=4,CreditID=692,Status ='P'},
-new Slot{SlotID=84,DegreePlanID=7253,Term=4,CreditID=10,Status ='P'},
-new Slot{SlotID=85,DegreePlanID=7253,Term=4,CreditID=20,Status ='P'},
-new Slot{SlotID=86,DegreePlanID=7254,Term=1,CreditID=356,Status ='C'},
-new Slot{SlotID=87,DegreePlanID=7254,Term=1,CreditID=542,Status ='C'},
-new Slot{SlotID=88,DegreePlanID=7254,Term=1,CreditID=563,Status ='C'},
-new Slot{SlotID=89,DegreePlanID=7254,Term=2,CreditID=560,Status ='A'},
-new Slot{SlotID=90,DegreePlanID=7254,Term=2,CreditID=664,Status ='A'},
-new Slot{SlotID=91,DegreePlanID=7254,Term=2,CreditID=6,Status ='A'},
-new Slot{SlotID=92,DegreePlanID=7254,Term=3,CreditID=691,Status ='P'},
-new Slot{SlotID=93,DegreePlanID=7254,Term=3,CreditID=10,Status ='P'},
-new Slot{SlotID=94,DegreePlanID=7254,Term=3,CreditID=20,Status ='P'},
-new Slot{SlotID=95,DegreePlanID=7254,Term=4,CreditID=618,Status ='P'},
-new Slot{SlotID=96,DegreePlanID=7254,Term=5,CreditID=692,Status ='P'},
-new Slot{SlotID=97,DegreePlanID=7254,Term=5,CreditID=555,Status ='P'},
-new Slot{SlotID=98,DegreePlanID=7257,Term=1,CreditID=356,Status ='A'},
-new Slot{SlotID=99,DegreePlanID=7257,Term=1,CreditID=563,Status ='A'},
-new Slot{SlotID=100,DegreePlanID=7257,Term=1,CreditID=542,Status ='A'},
-new Slot{SlotID=101,DegreePlanID=7257,Term=1,CreditID=560,Status ='A'},
-new Slot{SlotID=102,DegreePlanID=7257,Term=2,CreditID=6,Status ='A'},
-new Slot{SlotID=103,DegreePlanID=7257,Term=2,CreditID=664,Status ='A'},
-new Slot{SlotID=104,DegreePlanID=7257,Term=2,CreditID=10,Status ='A'},
-new Slot{SlotID=105,DegreePlanID=7257,Term=3,CreditID=618,Status ='A'},
-new Slot{SlotID=106,DegreePlanID=7257,Term=3,CreditID=691,Status ='A'},
-new Slot{SlotID=107,DegreePlanID=7257,Term=4,CreditID=692,Status ='A'},
-new Slot{SlotID=108,DegreePlanID=7257,Term=4,CreditID=555,Status ='A'},
-new Slot{SlotID=109,DegreePlanID=7257,Term=4,CreditID=20,Status ='A'},
-new Slot{SlotID=110,DegreePlanID=7258,Term=1,CreditID=356,Status ='A'},
-new Slot{SlotID=111,DegreePlanID=7258,Term=1,CreditID=563,Status ='A'},
-new Slot{SlotID=112,DegreePlanID=7258,Term=1,CreditID=542,Status ='A'},
-new Slot{SlotID=113,DegreePlanID=7258,Term=1,CreditID=560,Status ='A'},
-new Slot{SlotID=114,DegreePlanID=7258,Term=2,CreditID=6,Status ='A'},
-new Slot{SlotID=115,DegreePlanID=7258,Term=2,CreditID=664,Status ='A'},
-new Slot{SlotID=116,DegreePlanID=7258,Term=2,CreditID=10,Status ='A'},
-new Slot{SlotID=117,DegreePlanID=7258,Term=3,CreditID=691,Status ='A'},
-new Slot{SlotID=118,DegreePlanID=7258,Term=3,CreditID=20,Status ='A'},
-new Slot{SlotID=119,DegreePlanID=7258,Term=4,CreditID=692,Status ='A'},
-new Slot{SlotID=120,DegreePlanID=7258,Term=4,CreditID=555,Status ='A'},
-new Slot{SlotID=121,DegreePlanID=7258,Term=5,CreditID=618,Status ='A'}
-
-                };
-                Console.WriteLine($"Inserted{slots.Length} new slots.");
-                foreach (Slot s in slots)
-                {
-                    context.Slots.Add(s);
                 }
                 context.SaveChanges();
             }
@@ -379,6 +241,70 @@ new StudentTerm{StudentTermID=45,DegreePlanId=7254,Term=5,TermAbbrev="F20",TermN
                 }
                 context.SaveChanges();
             }
+
+            if (context.Slots.Any())
+            {
+                Console.WriteLine("Slots already exist");
+            }
+            else
+            {
+                var slots = new Slot[] {
+ new Slot{SlotID=1,StudentTermID=1,Term=1,DegreeCreditID=26,Status ='B'},
+new Slot{SlotID=2,StudentTermID=1,Term=1,DegreeCreditID=27,Status ='B'},
+new Slot{SlotID=3,StudentTermID=1,Term=1,DegreeCreditID=28,Status ='C'},
+new Slot{SlotID=4,StudentTermID=1,Term=2,DegreeCreditID=29,Status ='C'},
+new Slot{SlotID=5,StudentTermID=2,Term=2,DegreeCreditID=35,Status ='B'},
+new Slot{SlotID=6,StudentTermID=2,Term=2,DegreeCreditID=36,Status ='B'},
+new Slot{SlotID=7,StudentTermID=2,Term=3,DegreeCreditID=30,Status ='B'},
+new Slot{SlotID=8,StudentTermID=3,Term=3,DegreeCreditID=36,Status ='B'},
+new Slot{SlotID=9,StudentTermID=3,Term=3,DegreeCreditID=31,Status ='B'},
+new Slot{SlotID=10,StudentTermID=3,Term=4,DegreeCreditID=33,Status ='B'},
+new Slot{SlotID=11,StudentTermID=4,Term=4,DegreeCreditID=37,Status ='B'},
+new Slot{SlotID=12,StudentTermID=4,Term=4,DegreeCreditID=43,Status ='B'},
+new Slot{SlotID=13,StudentTermID=13,Term=1,DegreeCreditID=13,Status ='B'},
+new Slot{SlotID=14,StudentTermID=14,Term=1,DegreeCreditID=14,Status ='B'},
+new Slot{SlotID=15,StudentTermID=15,Term=1,DegreeCreditID=15,Status ='B'},
+new Slot{SlotID=16,StudentTermID=16,Term=2,DegreeCreditID=16,Status ='B'},
+new Slot{SlotID=17,StudentTermID=17,Term=2,DegreeCreditID=17,Status ='B'},
+new Slot{SlotID=18,StudentTermID=18,Term=2,DegreeCreditID=18,Status ='B'},
+new Slot{SlotID=19,StudentTermID=19,Term=3,DegreeCreditID=19,Status ='B'},
+new Slot{SlotID=20,StudentTermID=20,Term=3,DegreeCreditID=20,Status ='B'},
+new Slot{SlotID=21,StudentTermID=21,Term=3,DegreeCreditID=21,Status ='B'},
+new Slot{SlotID=22,StudentTermID=22,Term=4,DegreeCreditID=22,Status ='B'},
+new Slot{SlotID=23,StudentTermID=23,Term=4,DegreeCreditID=23,Status ='B'},
+new Slot{SlotID=24,StudentTermID=24,Term=4,DegreeCreditID=24,Status ='B'},
+new Slot{SlotID=25,StudentTermID=25,Term=1,DegreeCreditID=25,Status ='B'},
+new Slot{SlotID=26,StudentTermID=26,Term=1,DegreeCreditID=26,Status ='B'},
+new Slot{SlotID=27,StudentTermID=27,Term=1,DegreeCreditID=27,Status ='C'},
+new Slot{SlotID=28,StudentTermID=28,Term=2,DegreeCreditID=28,Status ='C'},
+new Slot{SlotID=29,StudentTermID=29,Term=2,DegreeCreditID=29,Status ='A'},
+new Slot{SlotID=30,StudentTermID=30,Term=2,DegreeCreditID=30,Status ='A'},
+new Slot{SlotID=31,StudentTermID=31,Term=3,DegreeCreditID=31,Status ='A'},
+new Slot{SlotID=32,StudentTermID=32,Term=4,DegreeCreditID=23,Status ='A'},
+new Slot{SlotID=33,StudentTermID=33,Term=4,DegreeCreditID=20,Status ='A'},
+new Slot{SlotID=34,StudentTermID=34,Term=5,DegreeCreditID=23,Status ='A'},
+new Slot{SlotID=35,StudentTermID=35,Term=5,DegreeCreditID=24,Status ='A'},
+new Slot{SlotID=36,StudentTermID=36,Term=5,DegreeCreditID=25,Status ='A'},
+new Slot{SlotID=37,StudentTermID=37,Term=1,DegreeCreditID=45,Status ='A'},
+new Slot{SlotID=38,StudentTermID=38,Term=1,DegreeCreditID=44,Status ='A'},
+new Slot{SlotID=39,StudentTermID=39,Term=1,DegreeCreditID=12,Status ='A'},
+new Slot{SlotID=40,StudentTermID=40,Term=2,DegreeCreditID=19,Status ='A'},
+new Slot{SlotID=41,StudentTermID=41,Term=2,DegreeCreditID=21,Status ='A'},
+new Slot{SlotID=42,StudentTermID=42,Term=2,DegreeCreditID=6,Status ='A'},
+new Slot{SlotID=43,StudentTermID=43,Term=4,DegreeCreditID=7,Status ='A'},
+new Slot{SlotID=44,StudentTermID=44,Term=4,DegreeCreditID=20,Status ='A'},
+new Slot{SlotID=45,StudentTermID=45,Term=5,DegreeCreditID=9,Status ='A'},
+
+
+                };
+                Console.WriteLine($"Inserted{slots.Length} new slots.");
+                foreach (Slot s in slots)
+                {
+                    context.Slots.Add(s);
+                }
+                context.SaveChanges();
+            }
+
 
             if (context.Developers.Any())
             {

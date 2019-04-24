@@ -12,5 +12,17 @@ public class Degree
     public string DegreeName { get; set; }
     public int NumberOFTerms { get; set; }
     public bool Done { get; set; }
+    // Add navigation property for each related entity
 
+    // each degree has many requirements... 
+    public System.Collections.Generic.ICollection<DegreeCredit> DegreeCredits { get; set; }
+    public override string ToString()
+    {
+        return base.ToString() + ": " +
+          "DegreeId = " + DegreeID +
+          ", DegreeAbbrev = " + DegreeAbbrev +
+          ", DegreeName = " + DegreeName +
+          ",NumberOFTerms = "+ NumberOFTerms+
+          "";
+    }
 }

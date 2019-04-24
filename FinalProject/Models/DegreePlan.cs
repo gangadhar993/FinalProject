@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 /// <summary>
@@ -20,4 +21,18 @@ public class DegreePlan
     public bool Done { get; set; }
 
     //changed plan structure
+
+    public System.Collections.Generic.ICollection<StudentTerm> StudentTerms { get; set; }
+    public override string ToString()
+    {
+        return base.ToString() + ": " +
+          "DegreePlanID = " + DegreePlanID +
+          "StudentId = " + StudentID +
+          ", DegreeID = " + DegreeID +
+          ", DegreePlanAbbrev = " + DegreePlanAbbrev +
+          ", DegreePlanName = " + DegreePlanName +
+          ", Student ={" + Student.ToString() +
+                        "}, Degree = {" + Degree.ToString() +
+                       "}";
+    }
 }

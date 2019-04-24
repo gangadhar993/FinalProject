@@ -18,8 +18,8 @@
                 <span asp-validation-for="SlotID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DegreePlanID" class="control-label"></label>
-                <select asp-for="DegreePlanID" class ="form-control" asp-items="ViewBag.DegreePlanID"></select>
+                <label asp-for="StudentTermID" class="control-label"></label>
+                <select asp-for="StudentTermID" class ="form-control" asp-items="ViewBag.StudentTermID"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Term" class="control-label"></label>
@@ -27,13 +27,18 @@
                 <span asp-validation-for="Term" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CreditID" class="control-label"></label>
-                <select asp-for="CreditID" class ="form-control" asp-items="ViewBag.CreditID"></select>
+                <label asp-for="DegreeCreditID" class="control-label"></label>
+                <select asp-for="DegreeCreditID" class ="form-control" asp-items="ViewBag.DegreeCreditID"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
                 <input asp-for="Status" class="form-control" />
                 <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Done" /> @Html.DisplayNameFor(model => model.Done)
+                </label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

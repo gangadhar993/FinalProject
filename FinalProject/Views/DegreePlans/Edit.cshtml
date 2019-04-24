@@ -3,7 +3,11 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<!-- https://github.com/SortableJS/Sortable  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sortable/0.8.0/css/sortable-theme-bootstrap.min.css" />
 
+<!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <h1>Edit</h1>
 
 <h4>DegreePlan</h4>
@@ -38,11 +42,143 @@
             </div>
         </form>
     </div>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-4">
+                <aside id="req" class="list-group col" style="background-color: azure">
+                    <h2>Reqmt</h2>
+
+                    @{
+
+                           
+
+
+
+                          ICollection<DegreeCredit> plannedList = new List<DegreeCredit>();
+
+                        foreach (var t in Model.StudentTerms.OrderBy(pt => pt.Term))
+                        {
+                            foreach (var tr in t.Slots)
+                            {
+                                plannedList.Add(tr.DegreeCredit);
+                            }
+                    }
+                        }
+
+                        @foreach (var r in Model.Degree.DegreeCredits.OrderBy(dr => dr.DegreeID))
+                    {
+                        <p class="list-group-item">@(r.Degree.DegreeName + " (" + r.DegreeCreditID + ")")</p>
+                    }
+
+                     </aside>
+            </div>
+
+                    <div class="col-md-8">
+                         @foreach (var t in Model.StudentTerms.OrderBy(pt => pt.Term))
+                        {
+                            <article id="@("term" + t.Term.ToString())" class="list-group col" style="background-color: azure">
+                                <h2>@(t.TermName + " (" + t.StudentTermID + ")")</h2>
+
+
+                            </article>
+                        }
+                    </div>
+
+                </aside>
+            </div>
+           
+        </div>
+    </div>
 </div>
 
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+
+<script>
+
+    const reqElement = document.getElementById('req')
+
+    const t1Element = document.getElementById('term1')
+    const t2Element = document.getElementById('term2')
+    const t3Element = document.getElementById('term3')
+    const t4Element = document.getElementById('term4')
+    const t5Element = document.getElementById('term5')
+    const t6Element = document.getElementById('term6')
+
+    new Sortable(reqElement, {
+        group: {
+            name: 'shared'
+        },
+        animation: 150,
+        fallbackOnBody: true,
+        swapThreshold: 0.65,
+        ghostClass: 'blue-background-class'
+    });
+
+    new Sortable(t1Element, {
+        group: {
+            name: 'shared'
+        },
+        animation: 150,
+        fallbackOnBody: true,
+        swapThreshold: 0.65,
+        ghostClass: 'blue-background-class'
+    });
+
+    new Sortable(t2Element, {
+        group: {
+            name: 'shared'
+        },
+        animation: 150,
+        fallbackOnBody: true,
+        swapThreshold: 0.65,
+        ghostClass: 'blue-background-class'
+    });
+
+    new Sortable(t3Element, {
+        group: {
+            name: 'shared'
+        },
+        animation: 150,
+        fallbackOnBody: true,
+        swapThreshold: 0.65,
+        ghostClass: 'blue-background-class'
+    });
+
+    new Sortable(t4Element, {
+        group: {
+            name: 'shared'
+        },
+        animation: 150,
+        fallbackOnBody: true,
+        swapThreshold: 0.65,
+        ghostClass: 'blue-background-class'
+    });
+
+    new Sortable(t5Element, {
+        group: {
+            name: 'shared'
+        },
+        animation: 150,
+        fallbackOnBody: true,
+        swapThreshold: 0.65,
+        ghostClass: 'blue-background-class'
+    });
+
+    new Sortable(t6Element, {
+        group: {
+            name: 'shared'
+        },
+        animation: 150,
+        fallbackOnBody: true,
+        swapThreshold: 0.65,
+        ghostClass: 'blue-background-class'
+    });
+
+</script>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

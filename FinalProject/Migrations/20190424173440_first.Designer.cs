@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190408203231_firstmigration")]
-    partial class firstmigration
+    [Migration("20190424173440_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,11 +37,7 @@ namespace FinalProject.Migrations
 
                     b.Property<int>("IsSummer");
 
-                    b.Property<int?>("SlotID");
-
                     b.HasKey("CreditID");
-
-                    b.HasIndex("SlotID");
 
                     b.ToTable("Credit");
                 });
@@ -299,9 +295,7 @@ namespace FinalProject.Migrations
                 {
                     b.Property<int>("SlotID");
 
-                    b.Property<int>("CreditID");
-
-                    b.Property<int>("DegreePlanID");
+                    b.Property<int>("DegreeCreditID");
 
                     b.Property<bool>("Done");
 
@@ -309,13 +303,15 @@ namespace FinalProject.Migrations
                         .IsRequired()
                         .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 1)));
 
+                    b.Property<int>("StudentTermID");
+
                     b.Property<int>("Term");
 
                     b.HasKey("SlotID");
 
-                    b.HasIndex("CreditID");
+                    b.HasIndex("DegreeCreditID");
 
-                    b.HasIndex("DegreePlanID");
+                    b.HasIndex("StudentTermID");
 
                     b.ToTable("Slot");
                 });
@@ -337,7 +333,7 @@ namespace FinalProject.Migrations
                     b.ToTable("Student");
                 });
 
-            modelBuilder.Entity("dotnetproject.Models.StudentTerm", b =>
+            modelBuilder.Entity("StudentTerm", b =>
                 {
                     b.Property<int>("StudentTermID");
 
@@ -353,25 +349,20 @@ namespace FinalProject.Migrations
 
                     b.HasKey("StudentTermID");
 
-                    b.ToTable("StudentTerm");
-                });
+                    b.HasIndex("DegreePlanId");
 
-            modelBuilder.Entity("Credit", b =>
-                {
-                    b.HasOne("Slot")
-                        .WithMany("Credits")
-                        .HasForeignKey("SlotID");
+                    b.ToTable("StudentTerm");
                 });
 
             modelBuilder.Entity("DegreeCredit", b =>
                 {
                     b.HasOne("Credit", "Credit")
-                        .WithMany()
+                        .WithMany("DegreeCredits")
                         .HasForeignKey("CreditID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Degree", "Degree")
-                        .WithMany()
+                        .WithMany("DegreeCredits")
                         .HasForeignKey("DegreeID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -384,7 +375,7 @@ namespace FinalProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Student", "Student")
-                        .WithMany()
+                        .WithMany("DegreePlans")
                         .HasForeignKey("StudentID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -436,14 +427,22 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("Slot", b =>
                 {
-                    b.HasOne("Credit", "Credit")
+                    b.HasOne("DegreeCredit", "DegreeCredit")
                         .WithMany()
-                        .HasForeignKey("CreditID")
+                        .HasForeignKey("DegreeCreditID")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("StudentTerm", "StudentTerm")
+                        .WithMany("Slots")
+                        .HasForeignKey("StudentTermID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("StudentTerm", b =>
+                {
                     b.HasOne("DegreePlan", "DegreePlan")
-                        .WithMany()
-                        .HasForeignKey("DegreePlanID")
+                        .WithMany("StudentTerms")
+                        .HasForeignKey("DegreePlanId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

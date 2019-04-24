@@ -15,4 +15,13 @@ public class Credit
     public int IsFall { get; set; }
     public bool Done { get; set; }
 
+    public System.Collections.Generic.ICollection<DegreeCredit> DegreeCredits { get; set; }
+    public override string ToString()
+    {
+        return base.ToString() + ": " +
+          "CreditID = " + CreditID +
+          "CreditAbbrev = " + CreditAbbrev +
+          "CreditName = " + CreditName;
+      ;
+    }
 }

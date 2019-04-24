@@ -14,4 +14,15 @@ public class Student
     public int I919 { get; set; }
     public bool Done { get; set; }
 
+    public System.Collections.Generic.ICollection<DegreePlan> DegreePlans { get; set; }
+
+    public override string ToString()
+    {
+        return base.ToString() + ": " +
+          "StudentID = " + StudentID +
+          ", LastName = " + LastName +
+          ", FirstName = " + FirstName +
+          ",I919 = " + I919 +
+          "";
+    }
 }

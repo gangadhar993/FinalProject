@@ -71,6 +71,7 @@ namespace FinalProject.Controllers
             }
 
             var credit = await _context.Credits
+                .Include(d => d.DegreeCredits)
                 .FirstOrDefaultAsync(m => m.CreditID == id);
             if (credit == null)
             {

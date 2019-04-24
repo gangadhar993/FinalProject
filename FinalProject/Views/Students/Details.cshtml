@@ -10,23 +10,46 @@
     <h4>Student</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.LastName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.LastName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FirstName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.I919)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.I919)
+        </dd>
+        <dt>@Html.DisplayNameFor(model => model.DegreePlans)  </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Degree ID</th>
+                    <th>Degree Plan Abbrev</th>
+                    <th>DegreePlan ID</th>
+                    <th>DegreePlan Name</th>
+                </tr>
+                @foreach (var item in Model.DegreePlans.OrderBy(r => r.DegreePlanID))
+                {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.DegreeID) </td>
+                    <td>@Html.DisplayFor(modelItem => item.DegreePlanAbbrev) </td>
+                    <td>@Html.DisplayFor(modelItem => item.DegreePlanID) </td>
+                    <td>@Html.DisplayFor(modelItem => item.DegreePlanName) </td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="DegreePlans" asp-route-id="@item.DegreePlanID">Plan</a>
+                    </td>
+                </tr>
+                }
+            </table>
         </dd>
     </dl>
 </div>
