@@ -18,7 +18,7 @@ namespace FinalProject.Controllers
             _context = context;
         }
 
-        // GET: Slots
+        // GET:slots
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Slots.Include(s => s.DegreeCredit).Include(s => s.StudentTerm);
