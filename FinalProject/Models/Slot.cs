@@ -24,6 +24,8 @@ public class Slot
     public bool Done { get; set; }
     public override string ToString()
     {
+
+
         return base.ToString() + ": " +
           "SlotID = " + SlotID +
           "StudentTermID = " + StudentTermID +
