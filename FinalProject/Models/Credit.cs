@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Summary description for Credit
@@ -9,6 +10,8 @@ public class Credit
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int CreditID { get; set; }
     public string CreditAbbrev { get; set; }
+    [Required]
+    [StringLength(25)]
     public string CreditName { get; set; }
     public int IsSummer{ get; set; }
     public int IsSpring { get; set; }
