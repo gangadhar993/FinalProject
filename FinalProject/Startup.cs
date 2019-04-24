@@ -44,7 +44,7 @@ namespace FinalProject
                     Configuration.GetConnectionString("DefaultConnection")));
 
             // Automatically perform database migration
-            services.BuildServiceProvider().GetService<ApplicationDbContext>().Database.Migrate();
+         //   services.BuildServiceProvider().GetService<ApplicationDbContext>().Database.Migrate();
             
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
